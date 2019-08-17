@@ -1,10 +1,14 @@
 const userModel = require('../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const sanitize = require('mongo-sanitize');
 
 module.exports = {
     create: function(req, res, next) {
-        userModel.create({ name: req.body.name, email: req.body.email, password: req.body.password }, function (err, result) {
+        const name = sanitize(req.body.name);
+        const email = sanitize(req.body.email);
+        const password = sanitize(req.body.password);
+        userModel.create({ name, email, password }, function (err, result) {
             if (err) {
                 next(err);
             } else {
@@ -14,13 +18,16 @@ module.exports = {
     },
 
     authenticate: function(req, res, next) {
-        if (req.body.name && req.body.email && req.body.password)
+        //const name = sanitize(req.body.name);
+        const email = sanitize(req.body.email);
+        const password = sanitize(req.body.password);
+        if (email && password)
         {
-            userModel.findOne({ email:req.body.email }, function(err, userInfo) {
+            userModel.findOne({ email }, function(err, userInfo) {
                 if (err) {
                     next(err);
                 } else {
-                    if(bcrypt.compareSync(req.body.password, userInfo.password)) {
+                    if(userInfo && bcrypt.compareSync(password, userInfo.password)) {
                         const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), { expiresIn: '30h' });
                         res.json({ status:"success", message: "user found!", data: {user:userInfo, token}});
                     } else {
@@ -29,7 +36,7 @@ module.exports = {
                 }
             }); 
         }else{
-            res.json({status:"error", message: "Invalid email/password", data:null});
+            res.status(400).json({status:400, message: "Invalid email/password", data:null});
         }
         
     }

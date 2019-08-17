@@ -20,7 +20,8 @@ const UserSchema = new Schema({
         type: String,
         trim: true,
         required: true
-    }
+    },
+    likes: { type : Array , "default" : [] }
 });
 
 // Hash user password before saving into database

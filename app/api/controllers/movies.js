@@ -1,9 +1,11 @@
 const movieModel = require('../models/movies');
+const sanitize = require('mongo-sanitize');
 
 module.exports = {
     getById: function(req, res, next) {
         console.log(req.body);
-        movieModel.findById(req.params.movieId, function(err, movieInfo) {
+        const movieId = sanitize(req.params.movieId);
+        movieModel.findById(movieId, function(err, movieInfo) {
             if (err) {
                 next(err);
             } else {
@@ -28,7 +30,9 @@ module.exports = {
     },
 
     updateById: function(req, res, next) {
-        movieModel.findByIdAndUpdate(req.params.movieId, {name:req.body.name}, function(err, movieInfo){
+        const movieId = sanitize(req.params.movieId);
+        const name = sanitize(req.body.name);
+        movieModel.findByIdAndUpdate(movieId, {name}, function(err, movieInfo){
             if(err) {
                 next(err);
             } else {
@@ -38,7 +42,8 @@ module.exports = {
     },
 
     deleteById: function(req, res, next) {
-        movieModel.findByIdAndRemove(req.params.movieId, function(err, movieInfo){
+        const movieId = sanitize(req.params.movieId);
+        movieModel.findByIdAndRemove(movieId, function(err, movieInfo){
             if(err) {
                 next(err);
             } else {
@@ -48,7 +53,9 @@ module.exports = {
     },
 
     create: function(req, res, next) {
-        movieModel.create({ name: req.body.name, released_on: req.body.released_on }, function (err, result) {
+        const name = sanitize(req.body.name);
+        const released_on = sanitize(req.body.released_on);
+        movieModel.create({ name: name, released_on: released_on }, function (err, result) {
             if (err) {
                 next(err);
             } else {

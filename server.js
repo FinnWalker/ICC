@@ -17,7 +17,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
-    res.json({"tutorial" : "Build REST API with node.js"});
+    res.json({"Message" : "Nothing here."});
 });
 
 // public route
