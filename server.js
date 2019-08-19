@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const profile = require('./routes/profile');
 const likes = require('./routes/likes');
 const users = require('./routes/users');
+const items = require('./routes/items');
 const mongoose = require('./config/database'); // Database configuration
 
 var jwt = require('jsonwebtoken');
@@ -27,7 +28,7 @@ app.use('/users/likes', validateUser, likes);
 app.use('/users/profile', validateUser, profile);
 // public route
 app.use('/users', users);
-
+app.use('/items', items);
 
 
 app.get('/favicon.ico', (req, res) => {
