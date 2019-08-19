@@ -58,7 +58,7 @@ module.exports = {
                                 if(err) {
                                     next(err);
                                 }else{
-                                    res.json("Like added");
+                                    res.json({message: "Like added"});
                                 }
                             });
                         }
