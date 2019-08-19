@@ -39,7 +39,7 @@ module.exports = {
                     next(err);
                 } else {
                     if(userInfo && bcrypt.compareSync(password, userInfo.password)) {
-                        const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), { expiresIn: '30h' });
+                        const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), { expiresIn: '24h' });
                         res.json({ token });
                     } else {
                         res.status(401).json({message: "Invalid credentials"});
