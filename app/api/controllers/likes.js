@@ -22,7 +22,8 @@ module.exports = {
                 next(err);
             }else if (user) {
                 if(user.likes.includes(itemId)) {
-                    user.likes.splice(itemId, 1);
+                    const index = user.likes.indexOf(itemId);
+                    if (index !== -1) user.likes.splice(index, 1);
                     user.save(function(err) {
                         if(err) {
                             next(err);
