@@ -27,7 +27,7 @@ module.exports = {
                         if(err) {
                             next(err);
                         }else{
-                            res.json("Like removed");
+                            res.json({message: "Like removed"});
                         }
                     });
                 }else{
