@@ -6,7 +6,7 @@ module.exports = {
         likesModel.find({}, function(err, items) {
             if(err) {
                 next(err);
-            }else if (item) {
+            }else if (items) {
                 res.json({items});
             }else{
                 res.json({message: "Items not found"});
