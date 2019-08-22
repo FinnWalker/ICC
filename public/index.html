@@ -7,6 +7,38 @@
     <title>CoachAU</title>
 </head>
 <body>
-    <h1>Welcome to CoachAU!</h1>
+    <form>
+        <input id="name" type="text" placeholder="name">
+        <input id="email" type="text" placeholder="email">
+        <button id="submit-button" onclick="sendForm()">SUBMIT</button>
+    </form>
+    <script>
+
+        document.getElementById("submit-button").addEventListener("click", 
+        function(e){
+            e.preventDefault();
+            sendForm();
+        });
+
+        function sendForm() {
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //document.getElementById("demo").innerHTML = this.responseText;
+                }
+            };
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            let formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            xhttp.open("POST", "https://coachau.com/users/register", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(formData);
+        }
+    </script>
 </body>
 </html>
