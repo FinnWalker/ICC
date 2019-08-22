@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>CoachAU</title>
-</head>
-<body>
+  </head>
+  <body>
     <form id="form">
-        <input id="name" type="text" name="name" placeholder="name">
-        <input id="email" type="text" name="email" placeholder="email">
-        <button id="submit-button">SUBMIT</button>
+      <input id="name" type="text" placeholder="name" />
+      <input id="email" type="text" placeholder="email" />
+      <button id="submit-button">SUBMIT</button>
     </form>
     <script>
-
-        document.getElementById("submit-button").addEventListener("click", 
-        function(e){
-            e.preventDefault();
-            sendForm();
+      document
+        .getElementById("submit-button")
+        .addEventListener("click", function(e) {
+          e.preventDefault();
+          sendForm();
         });
 
-        function sendForm() {
-            let xhttp = new XMLHttpRequest();
+      function sendForm() {
+        let xhttp = new XMLHttpRequest();
 
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200 || true) {
-                    console.log(this.response);
-                }
-            };
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4) {
+            console.log(this.response);
+          }
+        };
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
 
-            let formData = new FormData();
-            formData.append('name', name);
-            formData.append('email', email);
-            xhttp.open("POST", "https://coachau.com/users/register", true);
-            xhttp.send(formData);
-        }
+        xhttp.open("POST", "https://coachau.com/users/register", true);
+        xhttp.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+        xhttp.send("name=" + name + "&email=" + email);
+      }
     </script>
-</body>
+  </body>
 </html>
