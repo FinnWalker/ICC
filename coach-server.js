@@ -18,7 +18,9 @@ app.get('/', (req, res) => {
 });
 */
 
-// public route
+
+app.use(express.static('public'))
+
 app.use('/users', users);
 
 
