@@ -25,11 +25,11 @@ app.use(express.static('public'))
 
 app.use('/users', users);
 
-
+/*
 app.get('/favicon.ico', (req, res) => {
     res.sendStatus(204);
 });
-
+*/
 // express doesn't consider not found 404 as an error so we need to handle 404 explicitly
 
 app.use(function(req, res, next) {
