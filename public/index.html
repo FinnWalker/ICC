@@ -7,10 +7,10 @@
     <title>CoachAU</title>
 </head>
 <body>
-    <form>
-        <input id="name" type="text" placeholder="name">
-        <input id="email" type="text" placeholder="email">
-        <button id="submit-button" onclick="sendForm()">SUBMIT</button>
+    <form id="form">
+        <input id="name" type="text" name="name" placeholder="name">
+        <input id="email" type="text" name="email" placeholder="email">
+        <button id="submit-button">SUBMIT</button>
     </form>
     <script>
 
@@ -24,8 +24,8 @@
             let xhttp = new XMLHttpRequest();
 
             xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    //document.getElementById("demo").innerHTML = this.responseText;
+                if (this.readyState == 4 && this.status == 200 || true) {
+                    console.log(this.response);
                 }
             };
 
