@@ -1,6 +1,6 @@
 // Set up mongoose connection
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb://localhost/RC_API';
+const mongoDB = 'mongodb://localhost/Coach';
 mongoose.connect(mongoDB, {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 
