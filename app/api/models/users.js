@@ -13,8 +13,7 @@ const UserSchema = new Schema({
         type: String,
         trim: true,
         required: true
-    },
-    likes: { type : Array , "default" : [] }
+    }
 });
 
 module.exports = mongoose.model('User', UserSchema);

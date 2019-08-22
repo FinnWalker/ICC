@@ -2,16 +2,10 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-const profile = require('./routes/profile');
-const likes = require('./routes/likes');
 const users = require('./routes/users');
-const items = require('./routes/items');
 const mongoose = require('./config/database'); // Database configuration
 
-var jwt = require('jsonwebtoken');
 const app = express();
-
-app.set('secretKey', 'nodeRestApi'); // jwt secret key
 
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -22,30 +16,13 @@ app.get('/', (req, res) => {
     res.json({"Message" : "Nothing here."});
 });
 
-
-// private route
-app.use('/users/likes', validateUser, likes);
-app.use('/users/profile', validateUser, profile);
 // public route
 app.use('/users', users);
-app.use('/items', items);
 
 
 app.get('/favicon.ico', (req, res) => {
     res.sendStatus(204);
 });
-
-function validateUser(req, res, next) {
-    jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function(err, decoded) {
-        if (err) {
-            res.status(401).json({message: "Invalid token"});
-        }else{
-            // add user id to request
-            req.body.userId = decoded.id;
-            next();
-        }
-    });
-}
 
 // express doesn't consider not found 404 as an error so we need to handle 404 explicitly
 
@@ -67,4 +44,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(5000, () => {console.log('Server listening on port 5000')});
+app.listen(4000, () => {console.log('Server listening on port 4000')});
