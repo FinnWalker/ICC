@@ -1,18 +1,27 @@
+@font-face {
+    font-family: gothic13;
+    src:url(../fonts/Gothic\ No13\ Regular.otf);
+}
+
 h5 {
+    font-family: "gothic13";
     color: antiquewhite;
     height: 10px;
 
 }
 
 h6 {
+    font-family: "gothic13";
     color: antiquewhite;
 }
 
 h7 {
+    font-family: "gothic13";
     color: antiquewhite;
 }
 
 h8 {
+    font-family: "gothic13";
     color: antiquewhite;
 }
 
@@ -59,13 +68,14 @@ h8 {
 }
 
 input {
-    width: 220px;
+    width: 210px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
 
 input[type=text] {
+    font-family: "gothic13";
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -78,6 +88,7 @@ input[type=text] {
 }
 
 input[type=email] {
+    font-family: "gothic13";
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -90,8 +101,10 @@ input[type=email] {
 }
 
 input[type=button] {
+    font-family: "gothic13";
     padding: 12px 40px;
     margin: 8px 0;
+    margin-bottom: 0px;
     width: 60%;
     height: 30%;
     border: none;
@@ -110,6 +123,11 @@ input[type=button] {
 
 #_8thWallLogo {
     margin-top: -30px;
+}
+
+#privacyPolicy {
+    margin-top: 0vh;
+    margin-bottom: 2vh;
 }
 
 #backButton {
