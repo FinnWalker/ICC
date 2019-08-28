@@ -145,7 +145,7 @@
             <a-asset-item id="lifeRing" src="./3d_models/life_ring.glb"></a-asset-item>
             <a-asset-item id="dino_main" src="./3d_models/dino_baked1.glb"></a-asset-item>
             <a-asset-item id="dino_mini" src="./3d_models/static_dino_baked.glb"></a-asset-item>
-            <img id="skyline" src="./images/NYC_image_Bckground_03_2048x1024.png">
+            <img id="skyline" src="./images/NYC_Skyline_Motifs_2048x1024.png">
             <img id="skylineReflection" src="./images/Water_Comp01_City_SpriteSheet02.png">
             <img id="leaf" src="./images/Leaf_64x64.png">
             <!-- <img id="waterSprite" src="./images/Water_Comp03_SpriteSheet01.jpg"> -->
@@ -287,9 +287,9 @@
                         <!-- BOAT 1 -->
                         <a-entity id="boat_1_bob_animation"
                         position="0 -0.8 0"
-                        animation ="property: position; from: 0 0 0; to: 0 0.8 0; dir: alternate; dur: 2000; easing: linear; loop: true">
+                        animation ="property: position; from: 0 -0.05 0; to: 0 0.4 0; dir: alternate; dur: 2000; easing: linear; loop: true">
                             <a-entity
-                                boat="boat_num: 1; radius: 15"
+                                boat="boat_num: 1; radius: 10"
                                 scale="0.1 0.1 0.1"
                                 position="0 0 5"
                                 rotation="0 -25 0" 
@@ -310,9 +310,9 @@
                         <!-- BOAT 2 -->
                         <a-entity id="boat_2_bob_animation"
                         position="0 -0.8 0"
-                        animation ="property: position; from: 0 0 0; to: 0 0.5 0; dir: alternate; dur: 3000; easing: linear; loop: true">
+                        animation ="property: position; from: 0 -0.05 0; to: 0 0.5 0; dir: alternate; dur: 3000; easing: linear; loop: true">
                             <a-entity
-                                boat="boat_num: 2; radius: 15"
+                                boat="boat_num: 2; radius: 10"
                                 scale="0.1 0.1 0.1"
                                 position="0 0 -5"
                                 rotation="0 -140 0"
@@ -333,9 +333,9 @@
                         <!-- BOAT 3 -->
                         <a-entity id="boat_3_bob_animation"
                         position="0 -0.8 0"
-                        animation ="property: position; from: 0 0 0; to: 0 0.8 0; dir: alternate; dur: 2500; easing: linear; loop: true">
+                        animation ="property: position; from: 0 -0.05 0; to: 0 0.4 0; dir: alternate; dur: 2500; easing: linear; loop: true">
                             <a-entity
-                                boat="boat_num: 3; radius: 15"
+                                boat="boat_num: 3; radius: 10"
                                 scale="0.1 0.1 0.1"
                                 position="0 0 0"
                                 rotation="0 100 0"
@@ -376,8 +376,8 @@
                         animation="property: position; from: -3 0 0; to: -3.5 0.25 0; dir: alternate; dur: 2500; loop: true">
                             <a-entity id="ring_1"
                             gltf-model="#lifeRing"
-                            animation="property: position; from: 0 0 0; to: 0 0 2; dir: alternate; dur: 6000; loop: true"
-                            animation__rotation="property: rotation: from: 0 0 0; to: 0 0 60; dir: alternate; dur: 5000; loop: true">
+                            animation="property: position; from: 0 0 0; to: 0 0 2; dir: alternate; dur: 6000; loop: true">
+                            <!-- animation__rotation="property: rotation; from: 0 0 0; to: 0 0 60; dir: alternate; dur: 5000; loop: true"> -->
 
                             <!-- Ring 1 Dino -->
                                 <a-entity id="ringDino_1"
@@ -396,8 +396,8 @@
                         animation="property: position; from: 3 0 0; to: 3.5 0.25 0; dir: alternate; dur: 2000; loop: true">
                             <a-entity id="ring_2"
                             gltf-model="#lifeRing"
-                            animation="property: position; from: 0 0 0; to: 0 0 2; dir: alternate; dur: 5000; loop: true"
-                            animation__rotation="property: rotation: from: 0 0 0; to: 0 0 60; dir: alternate; dur: 4000; loop: true">
+                            animation="property: position; from: 0 0 0; to: 0 0 2; dir: alternate; dur: 5000; loop: true">
+                            <!-- animation__rotation="property: rotation; from: 0 0 0; to: 0 0 60; dir: alternate; dur: 4000; loop: true"> -->
 
                             <!-- Ring 2 Dino -->
                                 <a-entity id="ringDino_2"
@@ -433,10 +433,11 @@
                 <!-- END OF MAIN REX -->
                 
                 <!-- START OF SKYLINE -->
-                <a-entity position="0 0 1.2">
+                <a-entity position="0 3 1.2"
+                scale="2 2 2">
                     <a-plane
                         id="skylinePlane"
-                        position="0 5 7"
+                        position="0 8 7"
                         rotation="90 0 0"
                         scale="0.025 0.03 0.03"
                         
@@ -446,25 +447,27 @@
                     </a-plane>
                 </a-entity>
 
-                <a-plane id="skylineReflectionPlane"
-                position="0 0 0.5"
-                rotation="0 0 0"
-                scale="3.8 2 2"
+                <a-entity scale="2 1.5 1">
+                    <a-plane id="skylineReflectionPlane"
+                    position="0 8 0.5"
+                    rotation="0 0 0"
+                    scale="3.8 2 2"
 
-                height="5.12"
-                width="10.24"
+                    height="5.12"
+                    width="10.24"
 
-                src="#skylineReflection"
-                sprite-sheet="cols: 3; rows: 3; progress: 0"
-                material="transparent: true;"
-                skyline-reflection-sprite-sheet="speed: 0.5"></a-plane>
+                    src="#skylineReflection"
+                    sprite-sheet="cols: 3; rows: 3; progress: 0"
+                    material="transparent: true;"
+                    skyline-reflection-sprite-sheet="speed: 0.5"></a-plane>
+                </a-entity>
                 <!-- END OF SKYLINE -->
 
                 <!-- START OF PARTICLE SYSTEM -->
                 <a-entity 
                 rotation="90 0 0"
-                position="0 0 25"
-                custom-particle-system="src: #leaf; maxParticles: 15; spawnRadius: 12; speed: 2; boundaryDistance: 30;"></a-entity>
+                position="0 0 30"
+                custom-particle-system="src: #leaf; maxParticles: 80; spawnRadius: 16; speed: 2; boundaryDistance: 35;"></a-entity>
                 <!-- END OF PARTICLE SYSTEM -->
 
             </a-entity>

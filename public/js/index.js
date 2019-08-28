@@ -8,6 +8,7 @@ AFRAME.registerComponent('image-target', {
       const worldParent = document.querySelector("#world_parent");
       const skylinePlane = document.querySelector('#skylinePlane');
       const mainDino = document.querySelector("#t-rex");
+      const dingyDinoScene = document.querySelector("#life_ring_scene");
       const portalDoor = document.querySelector("#portalDoor");
       const windowParent = document.querySelector("#window_parent");
       const skySphere_full = document.querySelector("#skySphere_full");
@@ -31,6 +32,8 @@ AFRAME.registerComponent('image-target', {
             if(detail.name == "Coach_Target_05")
             { 
               skySphere_full.object3D.visible = false;
+              mainDino.object3D.visible = false;
+              dingyDinoScene.object3D.visible = false;
             }
             
             else {
@@ -630,11 +633,11 @@ AFRAME.registerComponent('image-target', {
       to: { type: 'vec3' }
     },
     init: function () {
-      const dino = document.querySelector("#t-rex");
+      // const dino = document.querySelector("#t-rex");
       
-      this.el.addEventListener("animationcomplete", () => {
-        dino.components.dino_animation.startAnimationsCountIn();
-      });
+      // this.el.addEventListener("animationcomplete", () => {
+      //   dino.components.dino_animation.startAnimationsCountIn();
+      // });
     },
     moveBox: function () {
       this.el.setAttribute("animation", {
