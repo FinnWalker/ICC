@@ -9,3 +9,16 @@ AFRAME.registerComponent('customize-loading-icon', {
       
     }
   });
+
+  AFRAME.registerComponent("powered_by_8th_wall", {
+    init: function() {
+      console.log("powered by 8th wall started");
+      let loadingBG = document.getElementById("loadImageContainer");
+      let poweredBy8thWall = document.getElementById("_8thWallDisclaimer");
+      let container = document.getElementById("8thWallContainer");
+      container.removeChild(poweredBy8thWall);
+      loadingBG.appendChild(poweredBy8thWall);
+    
+      
+    }
+  });

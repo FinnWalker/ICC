@@ -71,14 +71,7 @@
                     <input type="button" value="BRING NY TO LIFE" id="loginButton">
                 </form>
             </div>
-            <!-- <div id="_8thWallDisclaimer" class="center centerText">
-                <h6 id="poweredByText">AR Experience powered by </h6>
-                <img id="_8thWallLogo"
-                    src="./images/8thWallLogo_256.png"
-                    alt="coach logo"
-                    height="50px"
-                    width="100px">
-            </div> -->
+            
             <div id="privacyPolicy" class="center centerText">
                 <a href="https://coachaustralia.com/page/privacy-policy"><h5>Our Privacy Policy</h5></a>
             </div>
@@ -118,14 +111,14 @@
         </div>
     </div>
 
-    <div id="targetFoundOverlay" class="hidden">
-        <div class="pageOverlay">
-            <div id="targetImage">
-                <img src="" alt="target image">
-            </div>
-            <div id="imageText">
-
-            </div>
+    <div id="8thWallContainer">
+        <div id="_8thWallDisclaimer" class="center centerText">
+            <h6 id="poweredByText">AR Experience powered by </h6>
+            <img id="_8thWallLogo"
+                src="./images/8thWallLogo_256.png"
+                alt="coach logo"
+                height="50px"
+                width="100px">
         </div>
     </div>
      <!-- =============== END OF LOGIN AND INFO PAGES ============= -->
@@ -137,6 +130,7 @@
         xrextras-almost-there
         xrextras-loading
         customize-loading-icon
+        powered_by_8th_wall
         xrextras-runtime-error
         >   
 
@@ -145,7 +139,9 @@
             <a-asset-item id="lifeRing" src="./3d_models/life_ring.glb"></a-asset-item>
             <a-asset-item id="dino_main" src="./3d_models/dino_baked1.glb"></a-asset-item>
             <a-asset-item id="dino_mini" src="./3d_models/static_dino_baked.glb"></a-asset-item>
-            <img id="skyline" src="./images/NYC_Skyline_Motifs_2048x1024.png">
+            <!-- <img id="skyline" src="./images/NYC_Skyline_Motifs_2048x1024.png"> -->
+            <img id="skylineNoDinos" src="./images/NYC_Skyline_No_Dinos_2048x1024.png">
+            <img id="skylineJustDinos" src="./images/NYC_Skyline_Just_Dinos_2048x1024.png">
             <img id="skylineReflection" src="./images/Water_Comp01_City_SpriteSheet02.png">
             <img id="leaf" src="./images/Leaf_64x64.png">
             <!-- <img id="waterSprite" src="./images/Water_Comp03_SpriteSheet01.jpg"> -->
@@ -443,7 +439,21 @@
                         
                         height="512"
                         width="1024"
-                        material="src: #skyline; transparent: true;">
+                        material="src: #skylineNoDinos; transparent: true;">
+                    </a-plane>
+                </a-entity>
+
+                <a-entity position="0 3 1.2"
+                scale="2 2 2">
+                    <a-plane
+                        id="skylinePlaneJustDinos"
+                        position="0 8 7"
+                        rotation="90 0 0"
+                        scale="0.025 0.03 0.03"
+                        
+                        height="512"
+                        width="1024"
+                        material="src: #skylineJustDinos; transparent: true;">
                     </a-plane>
                 </a-entity>
 

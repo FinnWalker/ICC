@@ -13,6 +13,7 @@ AFRAME.registerComponent('image-target', {
       const windowParent = document.querySelector("#window_parent");
       const skySphere_full = document.querySelector("#skySphere_full");
       const skySphere_portal = document.querySelector("#skySphere_portal");
+      const skylinePlaneJustDinos = document.querySelector("#skylinePlaneJustDinos");
 
       skylinePlane.setAttribute("material", "depthWrite", false);
 
@@ -34,6 +35,9 @@ AFRAME.registerComponent('image-target', {
               skySphere_full.object3D.visible = false;
               mainDino.object3D.visible = false;
               dingyDinoScene.object3D.visible = false;
+
+              skylinePlaneJustDinos.object3D.visible = false;
+              
             }
             
             else {
