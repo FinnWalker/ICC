@@ -3,11 +3,13 @@ const sanitize = require("mongo-sanitize");
 
 module.exports = {
   create: function(req, res, next) {
-    const name = sanitize(req.body.name);
+    const first_name = sanitize(req.body.first_name);
     const email = sanitize(req.body.email);
+    const postcode = sanitize(req.body.postcode);
+    const marketing = sanitize(req.body.marketing);
 
-    if (name && email) {
-      userModel.create({ name, email }, function(err, result) {
+    if (first_name && email) {
+      userModel.create({ first_name, email, postcode, marketing }, function(err, result) {
         if (err) {
           next(err);
         } else {
@@ -15,6 +17,7 @@ module.exports = {
         }
       });
     } else {
+      console.log(req.body)
       res.status(400).json({ message: "Please include a name and email" });
     }
   }

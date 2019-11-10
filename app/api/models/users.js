@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    name: {
+    first_name: {
         type: String,
         trim: true,
         required: true,
@@ -13,6 +13,15 @@ const UserSchema = new Schema({
         type: String,
         trim: true,
         required: true
+    },
+    postcode: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    marketing: {
+        type: String,
+        require: true
     }
 });
 

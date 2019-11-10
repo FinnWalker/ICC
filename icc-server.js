@@ -50,4 +50,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(4000, () => {console.log('Server listening on port 4000')});
+app.listen(6000, () => {console.log('Server listening on port 6000')});
