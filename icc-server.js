@@ -16,6 +16,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 const usersController = require("./app/api/controllers/users.js");
 
 app.post('/icc/users/register', usersController.create);
-
+router.get('/icc/user_data', userController.getData);
 
 app.listen(6000, () => {console.log('Server listening on port 6000')});
