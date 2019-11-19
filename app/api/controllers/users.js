@@ -28,6 +28,7 @@ module.exports = {
 
     userModel.find({}, function(err, users) {
       if (err) {
+        res.status(500).json({message: "Error finding users"})
         console.log(err);
         console.log("There was an error finding users");
       } else {
