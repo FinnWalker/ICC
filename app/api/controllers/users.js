@@ -1,6 +1,8 @@
 const userModel = require("../models/users");
 const sanitize = require("mongo-sanitize");
 
+const fs = require('fs');
+
 module.exports = {
   create: function(req, res, next) {
     const first_name = sanitize(req.body.first_name);
@@ -20,5 +22,26 @@ module.exports = {
       console.log(req.body)
       res.status(400).json({ message: "Please include a name and email" });
     }
+  },
+  getData: function(req, res, next) {
+    let content = "First Name,Email,Postcode\n";
+
+    userModel.find({}, function(err, users) {
+      if (err) {
+        console.log(err);
+        console.log("There was an error finding users");
+      } else {
+        if (users) {
+          for (let users of users) {
+            content += participant.first_name + ',' + participant.email + ',' + participant.postcode + '\n';
+          }
+          fs.writeFile('icc_users.csv', content, function (err) {
+            if (err) throw err;
+            res.sendFile('icc_users.csv');
+          });
+        }
+      }
+    });
+
   }
 };
