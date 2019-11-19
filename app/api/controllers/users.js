@@ -64,7 +64,14 @@ module.exports = {
       });
     }
     else {
-      res.json({message: "Invalid password"});
+      const directory = path.join(
+        __dirname,
+        "..",
+        "..",
+        "..",
+        "data.html"
+      );
+      res.sendFile(directory);
     }
   }
 };
