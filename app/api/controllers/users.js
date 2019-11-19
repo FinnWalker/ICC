@@ -1,6 +1,7 @@
 const userModel = require("../models/users");
 const sanitize = require("mongo-sanitize");
 
+const path = require("path");
 const fs = require('fs');
 
 module.exports = {
