@@ -41,6 +41,8 @@ module.exports = {
             if (err) throw err;
             const directory = (path.join(__dirname, '..', '..', '..', 'icc_users.csv'));
             console.log(directory);
+            
+            res.set({'Content-Disposition': 'attachment; filename=icc_users.csv','Content-type': 'text/csv'});
             res.sendFile(directory);
           });
         }
