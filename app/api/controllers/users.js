@@ -2,7 +2,7 @@ const userModel = require("../models/users");
 const sanitize = require("mongo-sanitize");
 
 const path = require("path");
-const fs = require('fs');
+const fs = require("fs");
 
 module.exports = {
   create: function(req, res, next) {
@@ -12,7 +12,10 @@ module.exports = {
     const marketing = sanitize(req.body.marketing);
 
     if (first_name && email) {
-      userModel.create({ first_name, email, postcode, marketing }, function(err, result) {
+      userModel.create({ first_name, email, postcode, marketing }, function(
+        err,
+        result
+      ) {
         if (err) {
           next(err);
         } else {
@@ -20,34 +23,48 @@ module.exports = {
         }
       });
     } else {
-      console.log(req.body)
+      console.log(req.body);
       res.status(400).json({ message: "Please include a name and email" });
     }
   },
   getData: function(req, res) {
     let content = "First Name,Email,Postcode\n";
+    const password = sanitize(req.body.password);
+    if (password === "iccdatapass!") {
+      userModel.find({}, function(err, users) {
+        if (err) {
+          res.status(500).json({ message: "Error finding users" });
+          console.log(err);
+          console.log("There was an error finding users");
+        } else {
+          if (users) {
+            for (let user of users) {
+              content +=
+                user.first_name + "," + user.email + "," + user.postcode + "\n";
+            }
+            fs.writeFile("icc_users.csv", content, function(err) {
+              if (err) throw err;
+              const directory = path.join(
+                __dirname,
+                "..",
+                "..",
+                "..",
+                "icc_users.csv"
+              );
+              console.log(directory);
 
-    userModel.find({}, function(err, users) {
-      if (err) {
-        res.status(500).json({message: "Error finding users"})
-        console.log(err);
-        console.log("There was an error finding users");
-      } else {
-        if (users) {
-          for (let user of users) {
-            content += user.first_name + ',' + user.email + ',' + user.postcode + '\n';
+              res.set({
+                "Content-Disposition": "attachment; filename=icc_users.csv",
+                "Content-type": "text/csv"
+              });
+              res.sendFile(directory);
+            });
           }
-          fs.writeFile('icc_users.csv', content, function (err) {
-            if (err) throw err;
-            const directory = (path.join(__dirname, '..', '..', '..', 'icc_users.csv'));
-            console.log(directory);
-            
-            res.set({'Content-Disposition': 'attachment; filename=icc_users.csv','Content-type': 'text/csv'});
-            res.sendFile(directory);
-          });
         }
-      }
-    });
-
+      });
+    }
+    else {
+      res.json({message: "Invalid password"});
+    }
   }
 };
