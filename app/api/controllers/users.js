@@ -38,7 +38,9 @@ module.exports = {
           }
           fs.writeFile('icc_users.csv', content, function (err) {
             if (err) throw err;
-            res.sendFile(__dirname + '/../icc_users.csv');
+            const directory = __dirname + '/../icc_users.csv';
+            console.log(directory);
+            res.sendFile(directory);
           });
         }
       }
