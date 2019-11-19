@@ -33,8 +33,8 @@ module.exports = {
         console.log("There was an error finding users");
       } else {
         if (users) {
-          for (let users of users) {
-            content += users.first_name + ',' + users.email + ',' + users.postcode + '\n';
+          for (let user of users) {
+            content += user.first_name + ',' + user.email + ',' + user.postcode + '\n';
           }
           fs.writeFile('icc_users.csv', content, function (err) {
             if (err) throw err;
