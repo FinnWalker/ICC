@@ -23,7 +23,7 @@ module.exports = {
       res.status(400).json({ message: "Please include a name and email" });
     }
   },
-  getData: function(req, res, next) {
+  getData: function(req, res) {
     let content = "First Name,Email,Postcode\n";
 
     userModel.find({}, function(err, users) {
@@ -38,7 +38,7 @@ module.exports = {
           }
           fs.writeFile('icc_users.csv', content, function (err) {
             if (err) throw err;
-            res.sendFile('icc_users.csv');
+            res.sendFile(__dirname + '/icc_users.csv');
           });
         }
       }
