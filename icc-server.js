@@ -17,6 +17,6 @@ const usersController = require("./app/api/controllers/users.js");
 
 app.post('/icc/users/register', usersController.create);
 //app.get('/icc/users/user_data', userController.getData);
-app.get('/icc/users/user_data', userController.getData);
+app.get('/icc/users/user_data', usersController.getData);
 
 app.listen(6000, () => {console.log('Server listening on port 6000')});
