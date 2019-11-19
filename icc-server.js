@@ -19,7 +19,9 @@ app.post('/icc/users/register', usersController.create);
 //app.get('/icc/users/user_data', userController.getData);
 app.post('/icc/users/user_data', usersController.getData);
 app.get('/icc/users/user_data', (req, res) => {
-    res.sendFile("data.html");
+    res.sendFile(path.join(
+        __dirname,
+        "data.html"));
 });
 
 app.listen(6000, () => {console.log('Server listening on port 6000')});
