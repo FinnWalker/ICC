@@ -34,7 +34,7 @@ module.exports = {
       } else {
         if (users) {
           for (let users of users) {
-            content += participant.first_name + ',' + participant.email + ',' + participant.postcode + '\n';
+            content += users.first_name + ',' + users.email + ',' + users.postcode + '\n';
           }
           fs.writeFile('icc_users.csv', content, function (err) {
             if (err) throw err;
