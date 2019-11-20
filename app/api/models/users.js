@@ -22,6 +22,9 @@ const UserSchema = new Schema({
     marketing: {
         type: String,
         require: true
+    },
+    timestamp: {
+        type: String
     }
 });
 

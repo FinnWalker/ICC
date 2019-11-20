@@ -12,7 +12,7 @@ module.exports = {
     const marketing = sanitize(req.body.marketing);
 
     if (first_name && email) {
-      userModel.create({ first_name, email, postcode, marketing }, function(
+      userModel.create({ first_name, email, postcode, marketing, timestamp: Date.now() }, function(
         err,
         result
       ) {
