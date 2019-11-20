@@ -30,7 +30,7 @@ module.exports = {
   getData: function(req, res) {
     let content = "First Name,Email,Postcode\n";
     const password = sanitize(req.body.password);
-    if (password === "iccdatapass!") {
+    if (password === "422820") {
       userModel.find({}, function(err, users) {
         if (err) {
           res.status(500).json({ message: "Error finding users" });
