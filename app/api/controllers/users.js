@@ -4,13 +4,9 @@ const sanitize = require("mongo-sanitize");
 const path = require("path");
 const fs = require("fs");
 
-var moment = require('moment'),
-    time = require('time');
+var moment = require('moment');
 
-const timeFunc = function(t,z) {
-    var tz = new time.Date(0, z);
-    return moment(t).add('minutes', t.getTimezoneOffset() - tz.getTimezoneOffset());
-}
+
 
 module.exports = {
   create: function(req, res, next) {
@@ -20,7 +16,8 @@ module.exports = {
     const marketing = sanitize(req.body.marketing);
 
     if (first_name && email) {
-      userModel.create({ first_name, email, postcode, marketing, timestamp: timeFunc(new Date(), 'Australia/Sydney').format('Do MMM \'YY - h:mm:ss a') }, function(
+      let time = moment.tz(new Date(), "Australia/Sydney");
+      userModel.create({ first_name, email, postcode, marketing, timestamp: time.format('D/MM/YYYY hh:mm A') }, function(
         err,
         result
       ) {
