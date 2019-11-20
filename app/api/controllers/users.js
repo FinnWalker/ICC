@@ -21,6 +21,7 @@ module.exports = {
     const afghanistan = sanitize(req.body.afghanistan);
     if(typeof afghanistan === 'undefined') {
       afghanistan = '_';
+      console.log(afghanistan + " should be _!");
     } else {
       console.log(afghanistan);
     }
