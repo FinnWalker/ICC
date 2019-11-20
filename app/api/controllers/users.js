@@ -11,35 +11,35 @@ var moment = require('moment');
 module.exports = {
   create: function(req, res, next) {
     const first_name = sanitize(req.body.first_name);
-    if(first_name === 'undefined') first_name = '_';
+    if(first_name === undefined) first_name = '_';
     const email = sanitize(req.body.email);
-    if(email === 'undefined') email = '_';
+    if(email === undefined) email = '_';
     const postcode = sanitize(req.body.postcode);
-    if(postcode === 'undefined') postcode = '_';
+    if(postcode === undefined) postcode = '_';
     const marketing = sanitize(req.body.marketing);
 
     const afghanistan = sanitize(req.body.afghanistan);
-    if(afghanistan === 'undefined') afghanistan = '_';
+    if(afghanistan === undefined) afghanistan = '_';
     const australia = sanitize(req.body.australia);
-    if(australia === 'undefined') australia = '_';
+    if(australia === undefined) australia = '_';
     const bangladesh = sanitize(req.body.bangladesh);
-    if(bangladesh === 'undefined') bangladesh = '_';
+    if(bangladesh === undefined) bangladesh = '_';
     const england = sanitize(req.body.england);
-    if(england === 'undefined') england = '_';
+    if(england === undefined) england = '_';
     const india = sanitize(req.body.india);
-    if(india === 'undefined') india = '_';
+    if(india === undefined) india = '_';
     const pakistan = sanitize(req.body.pakistan);
-    if(pakistan === 'undefined') pakistan = '_';
+    if(pakistan === undefined) pakistan = '_';
     const south_africa = sanitize(req.body.south_africa);
-    if(south_africa === 'undefined') south_africa = '_';
+    if(south_africa === undefined) south_africa = '_';
     const sri_lanka = sanitize(req.body.sri_lanka);
-    if(sri_lanka === 'undefined') sri_lanka = '_';
+    if(sri_lanka === undefined) sri_lanka = '_';
     const thailand = sanitize(req.body.thailand);
-    if(thailand === 'undefined') thailand = '_';
+    if(thailand === undefined) thailand = '_';
     const west_indies = sanitize(req.body.west_indies);
-    if(west_indies === 'undefined') west_indies = '_';
+    if(west_indies === undefined) west_indies = '_';
     const other = sanitize(req.body.other);
-    if(other === 'undefined') other = '_';
+    if(other === undefined) other = '_';
 
     if (first_name && email) {
       let time = moment.tz(new Date(), "Australia/Sydney");
