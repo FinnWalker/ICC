@@ -41,7 +41,7 @@ module.exports = {
             for (let user of users) {
               content +=
                 user.first_name + "," + user.email + "," + user.postcode + "," + format(
-                  as.POSIXct(user.timestamp,format="%Y-%m-%dT%H:%M:%SZ",tz="UTC"),
+                  as.POSIXct(user.timestamp,util.format="%Y-%m-%dT%H:%M:%SZ",tz="UTC"),
                   tz="Australia/Sydney"
                 ) + "\n";
             }
