@@ -45,7 +45,7 @@ module.exports = {
     }
   },
   getData: function(req, res) {
-    let content = "First Name,Email,Postcode,Time\n";
+    let content = "First Name,Email,Postcode,Time,afghanistan,australia,bangladesh,england,india,pakistan,south_africa,sri_lanka,thailand,west_indies,other\n";
     const password = sanitize(req.body.password);
     if (password === "422820") {
       userModel.find({}, function(err, users) {
@@ -57,7 +57,7 @@ module.exports = {
           if (users) {
             for (let user of users) {
               content +=
-                user.first_name + "," + user.email + "," + user.postcode + "," + user.timestamp + "\n";
+                user.first_name + "," + user.email + "," + user.postcode + "," + user.timestamp + "," + user.afghanistan + "," + user.australia + "," + user.bangladesh + "," + user.england + "," + user.india + "," + user.pakistan + "," + user.south_africa + "," + user.sri_lanka + "," + user.thailand + "," + user.west_indies + "," + user.other + "\n";
             }
             fs.writeFile("icc_users.csv", content, function(err) {
               if (err) throw err;
