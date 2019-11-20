@@ -11,40 +11,22 @@ var moment = require('moment');
 module.exports = {
   create: function(req, res, next) {
     const first_name = sanitize(req.body.first_name);
-    if(typeof first_name === 'undefined') first_name = '_';
     const email = sanitize(req.body.email);
-    if(typeof email === 'undefined') email = '_';
     const postcode = sanitize(req.body.postcode);
-    if(typeof postcode === 'undefined') postcode = '_';
     const marketing = sanitize(req.body.marketing);
 
     const afghanistan = sanitize(req.body.afghanistan);
-    if(typeof afghanistan === 'undefined') {
-      afghanistan = '_';
-      console.log(afghanistan + " should be _!");
-    } else {
-      console.log(afghanistan);
-    }
     const australia = sanitize(req.body.australia);
-    if(typeof australia === 'undefined') australia = '_';
     const bangladesh = sanitize(req.body.bangladesh);
-    if(typeof bangladesh === 'undefined') bangladesh = '_';
     const england = sanitize(req.body.england);
-    if(typeof england === 'undefined') england = '_';
     const india = sanitize(req.body.india);
-    if(typeof india === 'undefined') india = '_';
     const pakistan = sanitize(req.body.pakistan);
-    if(typeof pakistan === 'undefined') pakistan = '_';
     const south_africa = sanitize(req.body.south_africa);
-    if(typeof south_africa === 'undefined') south_africa = '_';
     const sri_lanka = sanitize(req.body.sri_lanka);
-    if(typeof sri_lanka === 'undefined') sri_lanka = '_';
     const thailand = sanitize(req.body.thailand);
-    if(typeof thailand === 'undefined') thailand = '_';
     const west_indies = sanitize(req.body.west_indies);
-    if(typeof west_indies === 'undefined') west_indies = '_';
     const other = sanitize(req.body.other);
-    if(typeof other === 'undefined') other = '_';
+
 
     if (first_name && email) {
       let time = moment.tz(new Date(), "Australia/Sydney");
@@ -86,12 +68,9 @@ module.exports = {
               let timestamp = user.timestamp;
               if(timestamp === undefined) timestamp = '_';
               let afghanistan = user.afghanistan;
-              if(afghanistan === undefined) {
+              if(afghanistan === undefined) 
                 afghanistan = '_';
-                console.log(afghanistan + "is undefined");
-              } else {
-                console.log(afghanistan + "is not undefined");
-              }
+   
               let australia = user.australia;
               if(australia === undefined) australia = '_';
               let bangladesh = user.bangladesh;
@@ -113,7 +92,7 @@ module.exports = {
               let other = user.other;
               if(other === undefined) other = '_';
               content +=
-                first_name + "," + user.email + "," + user.postcode + "," + user.timestamp + "," + user.afghanistan + "," + user.australia + "," + user.bangladesh + "," + user.england + "," + user.india + "," + user.pakistan + "," + user.south_africa + "," + user.sri_lanka + "," + user.thailand + "," + user.west_indies + "," + user.other + "\n";
+                first_name + "," + email + "," + postcode + "," + timestamp + "," + afghanistan + "," + australia + "," + bangladesh + "," + england + "," + india + "," + pakistan + "," + south_africa + "," + sri_lanka + "," + thailand + "," + west_indies + "," + other + "\n";
             }
             fs.writeFile("icc_users.csv", content, function(err) {
               if (err) throw err;
