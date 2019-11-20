@@ -76,7 +76,9 @@ module.exports = {
           if (users) {
             for (let user of users) {
               let first_name = user.first_name;
-              if(first_name === undefined) first_name = '_';
+              if(first_name === undefined) 
+                first_name = '_';
+              
               let email = user.email;
               if(email === undefined) email = '_';
               let postcode = user.postcode;
@@ -84,7 +86,11 @@ module.exports = {
               let timestamp = user.timestamp;
               if(timestamp === undefined) timestamp = '_';
               let afghanistan = user.afghanistan;
-              if(afghanistan === undefined) afghanistan = '_';
+              if(afghanistan === undefined) {
+                afghanistan = '_';
+              } else {
+                console.log(afghanistan + "is not undefined");
+              }
               let australia = user.australia;
               if(australia === undefined) australia = '_';
               let bangladesh = user.bangladesh;
