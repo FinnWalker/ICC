@@ -28,7 +28,7 @@ module.exports = {
     }
   },
   getData: function(req, res) {
-    let content = "First Name,Email,Postcode\n";
+    let content = "First Name,Email,Postcode,Time\n";
     const password = sanitize(req.body.password);
     if (password === "422820") {
       userModel.find({}, function(err, users) {
@@ -40,7 +40,10 @@ module.exports = {
           if (users) {
             for (let user of users) {
               content +=
-                user.first_name + "," + user.email + "," + user.postcode + "\n";
+                user.first_name + "," + user.email + "," + user.postcode + "," + format(
+                  as.POSIXct(user.timestamp,format="%Y-%m-%dT%H:%M:%SZ",tz="UTC"),
+                  tz="Australia/Sydney"
+                ) + "\n";
             }
             fs.writeFile("icc_users.csv", content, function(err) {
               if (err) throw err;
