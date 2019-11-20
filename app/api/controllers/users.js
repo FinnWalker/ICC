@@ -15,9 +15,21 @@ module.exports = {
     const postcode = sanitize(req.body.postcode);
     const marketing = sanitize(req.body.marketing);
 
+    const afghanistan = sanitize(req.body.afghanistan);
+    const australia = sanitize(req.body.australia);
+    const bangladesh = sanitize(req.body.bangladesh);
+    const england = sanitize(req.body.england);
+    const india = sanitize(req.body.india);
+    const pakistan = sanitize(req.body.pakistan);
+    const south_africa = sanitize(req.body.south_africa);
+    const sri_lanka = sanitize(req.body.sri_lanka);
+    const thailand = sanitize(req.body.thailand);
+    const west_indies = sanitize(req.body.west_indies);
+    const other = sanitize(req.body.other);
+
     if (first_name && email) {
       let time = moment.tz(new Date(), "Australia/Sydney");
-      userModel.create({ first_name, email, postcode, marketing, timestamp: time.format('D/MM/YYYY hh:mm A') }, function(
+      userModel.create({ first_name, email, postcode, marketing, timestamp: time.format('D/MM/YYYY hh:mm A'), afghanistan,australia,bangladesh,england,india,pakistan,south_africa,sri_lanka,thailand,west_indies,other }, function(
         err,
         result
       ) {
