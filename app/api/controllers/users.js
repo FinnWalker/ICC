@@ -4,7 +4,7 @@ const sanitize = require("mongo-sanitize");
 const path = require("path");
 const fs = require("fs");
 
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 module.exports = {
   create: function(req, res, next) {
