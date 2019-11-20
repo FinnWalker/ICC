@@ -75,8 +75,38 @@ module.exports = {
         } else {
           if (users) {
             for (let user of users) {
+              let first_name = user.first_name;
+              if(first_name === undefined) first_name = '_';
+              let email = user.email;
+              if(email === undefined) email = '_';
+              let postcode = user.postcode;
+              if(postcode === undefined) postcode = '_';
+              let timestamp = user.timestamp;
+              if(timestamp === undefined) timestamp = '_';
+              let afghanistan = user.afghanistan;
+              if(afghanistan === undefined) afghanistan = '_';
+              let australia = user.australia;
+              if(australia === undefined) australia = '_';
+              let bangladesh = user.bangladesh;
+              if(bangladesh === undefined) bangladesh = '_';
+              let england = user.england;
+              if(england === undefined) england = '_';
+              let india = user.india;
+              if(india === undefined) india = '_';
+              let pakistan = user.pakistan;
+              if(pakistan === undefined) pakistan = '_';
+              let south_africa = user.south_africa;
+              if(south_africa === undefined) south_africa = '_';
+              let sri_lanka = user.sri_lanka;
+              if(sri_lanka === undefined) sri_lanka = '_';
+              let thailand = user.thailand;
+              if(thailand === undefined) thailand = '_';
+              let west_indies = user.west_indies;
+              if(west_indies === undefined) west_indies = '_';
+              let other = user.other;
+              if(other === undefined) other = '_';
               content +=
-                user.first_name || "_" + "," + user.email || "_" + "," + user.postcode || "_" + "," + user.timestamp || "_" + "," + user.afghanistan || "_" + "," + user.australia || "_" + "," + user.bangladesh || "_" + "," + user.england || "_" + "," + user.india || "_" + "," + user.pakistan || "_" + "," + user.south_africa || "_" + "," + user.sri_lanka || "_" + "," + user.thailand || "_" + "," + user.west_indies || "_" + "," + user.other || "_" + "\n";
+                first_name + "," + user.email + "," + user.postcode + "," + user.timestamp + "," + user.afghanistan + "," + user.australia + "," + user.bangladesh + "," + user.england + "," + user.india + "," + user.pakistan + "," + user.south_africa + "," + user.sri_lanka + "," + user.thailand + "," + user.west_indies + "," + user.other + "\n";
             }
             fs.writeFile("icc_users.csv", content, function(err) {
               if (err) throw err;
