@@ -76,7 +76,7 @@ module.exports = {
           if (users) {
             for (let user of users) {
               content +=
-                user.first_name + "," + user.email + "," + user.postcode + "," + user.timestamp + "," + user.afghanistan + "," + user.australia + "," + user.bangladesh + "," + user.england + "," + user.india + "," + user.pakistan + "," + user.south_africa + "," + user.sri_lanka + "," + user.thailand + "," + user.west_indies + "," + user.other + "\n";
+                user.first_name || "_" + "," + user.email || "_" + "," + user.postcode || "_" + "," + user.timestamp || "_" + "," + user.afghanistan || "_" + "," + user.australia || "_" + "," + user.bangladesh || "_" + "," + user.england || "_" + "," + user.india || "_" + "," + user.pakistan || "_" + "," + user.south_africa || "_" + "," + user.sri_lanka || "_" + "," + user.thailand || "_" + "," + user.west_indies || "_" + "," + user.other || "_" + "\n";
             }
             fs.writeFile("icc_users.csv", content, function(err) {
               if (err) throw err;
