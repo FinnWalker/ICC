@@ -45,10 +45,7 @@ module.exports = {
           if (users) {
             for (let user of users) {
               content +=
-                user.first_name + "," + user.email + "," + user.postcode + "," + format(
-                  as.POSIXct(user.timestamp,util.format="%Y-%m-%dT%H:%M:%SZ",tz="UTC"),
-                  tz="Australia/Sydney"
-                ) + "\n";
+                user.first_name + "," + user.email + "," + user.postcode + "," + user.timestamp + "\n";
             }
             fs.writeFile("icc_users.csv", content, function(err) {
               if (err) throw err;
