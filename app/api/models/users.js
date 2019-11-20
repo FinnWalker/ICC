@@ -25,6 +25,40 @@ const UserSchema = new Schema({
     },
     timestamp: {
         type: String
+    },
+
+    afghanistan: {
+        type: String
+    },
+    australia: {
+        type: String
+    },
+    bangladesh: {
+        type: String
+    },
+    england: {
+        type: String
+    },
+    india: {
+        type: String
+    },
+    pakistan: {
+        type: String
+    },
+    south_africa: {
+        type: String
+    },
+    sri_lanka: {
+        type: String
+    },
+    thailand: {
+        type: String
+    },
+    west_indies: {
+        type: String
+    },
+    other: {
+        type: String
     }
 });
 
