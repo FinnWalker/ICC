@@ -27,7 +27,7 @@ module.exports = {
 
 
     if (first_name && email) {
-      let time = moment().tz(new Date(), "Australia/Sydney");
+      let time = moment.tz(new Date(), "Australia/Sydney");
       userModel.create({ first_name, email, postcode, marketing, timestamp: time.format('D/MM/YYYY hh:mm A'), afghanistan,australia,bangladesh,england,india,pakistan,south_africa,sri_lanka,thailand,west_indies,other }, function(
         err,
         result
