@@ -88,6 +88,7 @@ module.exports = {
               let afghanistan = user.afghanistan;
               if(afghanistan === undefined) {
                 afghanistan = '_';
+                console.log(afghanistan + "is undefined");
               } else {
                 console.log(afghanistan + "is not undefined");
               }
