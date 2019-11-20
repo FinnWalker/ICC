@@ -19,7 +19,11 @@ module.exports = {
     const marketing = sanitize(req.body.marketing);
 
     const afghanistan = sanitize(req.body.afghanistan);
-    if(typeof afghanistan === 'undefined') afghanistan = '_';
+    if(typeof afghanistan === 'undefined') {
+      afghanistan = '_';
+    } else {
+      console.log(afghanistan);
+    }
     const australia = sanitize(req.body.australia);
     if(typeof australia === 'undefined') australia = '_';
     const bangladesh = sanitize(req.body.bangladesh);
