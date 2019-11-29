@@ -9,7 +9,7 @@ const mongoose = require("./config/database"); // Database configuration
 const app = express();
 app.use(cors());
 
-app.use('/', express.static('public'));
+app.use('/icc/', express.static('public'));
 
 mongoose.connection.on(
   "error",
